@@ -8,6 +8,10 @@ class Problem
     Problem.new(json['time'].to_f, json['flag'], json['problemset'])
   end
 
+  def self.load(path)
+    self.parse(IO.read(path))
+  end
+
   def initialize(time, flag, problemset)
     raise ArgumentError unless (time && time >= 0)
     raise ArgumentError unless (flag && !flag.empty?)
